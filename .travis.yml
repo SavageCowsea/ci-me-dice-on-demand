@@ -28,7 +28,7 @@ jobs:
           all_branches: true
     - stage: Test production
       script: curl https://homework-4-ci-cd2.herokuapp.com/
-notifications:
-  slack:
-    rooms:
-	    - praxisunal:tqZEMhhr054if6W75TF1ZdeY#travis
+  notifications:
+    slack:
+      rooms:
+        - praxisunal:tqZEMhhr054if6W75TF1ZdeY#travis
