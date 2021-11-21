@@ -31,4 +31,4 @@ jobs:
 notifications:
   slack:
     rooms:
-	  - praxisunal:tqZEMhhr054if6W75TF1ZdeY#travis
+	    - praxisunal:tqZEMhhr054if6W75TF1ZdeY#travis
