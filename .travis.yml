@@ -1,37 +1,33 @@
 language: python
 python:
-- '3.9'
+  - "3.9"
 install:
-- pip install -r requirements.txt
+  - pip install -r requirements.txt
 jobs:
   include:
-  - stage: Testing
-    script:
-    - python3 -m pytest -v tests/test_dice.py
-  - stage: Deploy to staging
-    script: skip
-    deploy:
-      provider: heroku
-      app: homework-4-ci-cd
-      api_key: "$HEROKU_AUTH_TOKEN"
-      on:
-        all_branches: true
-  - stage: Test staging
-    script: curl https://homework-4-ci-cd.herokuapp.com/
-  - stage: Deploy to production
-    script: skip
-    deploy:
-      provider: heroku
-      app: homework-4-ci-cd2
-      api_key: "$HEROKU_AUTH_TOKEN"
-      on:
-        all_branches: true
-  - stage: Test production
-    script: curl https://homework-4-ci-cd2.herokuapp.com/
-  notifications:
-    slack:
-      rooms:
-      - praxisunal:tqZEMhhr054if6W75TF1ZdeY#travis
+    - stage: Testing
+      script:
+        - python3 -m pytest -v tests/test_dice.py
+    - stage: Deploy to staging
+      script: skip
+      deploy:
+        provider: heroku
+        app: homework-4-ci-cd
+        api_key: "$HEROKU_AUTH_TOKEN"
+        on:
+          all_branches: true
+    - stage: Test staging
+      script: curl https://homework-4-ci-cd.herokuapp.com/
+    - stage: Deploy to production
+      script: skip
+      deploy:
+        provider: heroku
+        app: homework-4-ci-cd2
+        api_key: "$HEROKU_AUTH_TOKEN"
+        on:
+          all_branches: true
+    - stage: Test production
+      script: curl https://homework-4-ci-cd2.herokuapp.com/
 notifications:
   slack:
     secure: jCWARCV3VcoJKwQT94jt0AlsISg/o0DexCwhzIzuWZSW3wJ24behxmv7Msr4lFo/iT2hVb1ZQfEk+W4edxCbhZp04f8J98b+oZW80Ga0UwM8jJ8TzRqfuUglz6bSzrFwclFnj/6r8hl4dv9dr5VdB35b8u00BxHp8g6fz1jrM/ceRHe+13Jx7sYXoPerHsXbFDoEAb/Hh7fD0IvbIJnpItZEgjlY5iBRhLXuG0DyCP4Ah0IGWnQZvJfsF0FEzN3FG5JR4FOEd+Os9QWEwGqE4ZsPq9Z1XV5M3jJS1NdWROpTn8VAU9dYPzhCuAqwk1WEMnv0p3kM4knoGvFJ4BhJXNBjsEH//4cRteN5leZYc05+dcAYGOLZZFO7MKs9x3zXUDR510GHJFc3Skal0uUyj8weUFowivbEVtEE11GHL5pHiCcptVE4eSKKTX9jtzO2I38mjEXPDJBSewW18mG4smW7wd6JvXNDext0q523QrQOqOTBJlP16ZLi/D8XgBmk13c5QE+BN+UY6N8hl6GIbuy4MeE2ztIk1Ouztps4C0kjpaDSRFGZmGOFtjIgjVOu2d2+ixCKp2t59jEocsJ1AYBpBBQTWPrwDVMp4OblfSqvsOt1IqkKJQhFMsSe8nUKEEPNox8qKVZYXgH0+zyf2/Fqp1avqmtYjSX5FOi9vFM=
